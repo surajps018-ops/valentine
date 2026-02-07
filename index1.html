@@ -1,22 +1,23 @@
 <script>
-function playLove() {
-    // music play
-    document.getElementById("music").play();
+function sendMessage() {
 
-    // WhatsApp number (with country code)
-    var phoneNumber = "919372832182"; 
+    // Music play (optional)
+    var music = document.getElementById("music");
+    if (music) {
+        music.play().catch(()=>{});
+    }
 
-    // Message text
-    var message = "Yes ❤️ I will be your Valentine! 💖";
+    // ✅ अपना WhatsApp number (India = 91)
+    var phoneNumber = "919372832182"; // <-- अपना number डालें
 
-    // WhatsApp redirect
-    var whatsappURL =
-        "https://wa.me/" +
-        phoneNumber +
-        "?text=" +
-        encodeURIComponent(message);
+    // ✅ Message
+    var message = "I clicked YES ❤️ Will you be my Valentine? 💖";
 
-    // Open WhatsApp
-    window.open(whatsappURL, "_blank");
+    // ✅ WhatsApp link (MOST IMPORTANT)
+    var url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+
+    // ✅ Open WhatsApp
+    window.location.href = url;
 }
 </script>
+v
