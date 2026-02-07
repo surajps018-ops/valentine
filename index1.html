@@ -1,0 +1,22 @@
+<script>
+function playLove() {
+    // music play
+    document.getElementById("music").play();
+
+    // WhatsApp number (with country code)
+    var phoneNumber = "91XXXXXXXXXX"; // <-- yahan apna number likhiye
+
+    // Message text
+    var message = "Yes ❤️ I will be your Valentine! 💖";
+
+    // WhatsApp redirect
+    var whatsappURL =
+        "https://wa.me/" +
+        phoneNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+    // Open WhatsApp
+    window.open(whatsappURL, "_blank");
+}
+</script>
