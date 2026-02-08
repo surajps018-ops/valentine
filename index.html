@@ -1,112 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Be My Valentine ❤️</title>
+<title>Valentine Surprise</title>
 
 <style>
 body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
+    text-align: center;
+    color: white;
     margin: 0;
-    height: 100vh;
-    background: radial-gradient(circle at top, #ff9a9e, #fad0c4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Segoe UI', sans-serif;
-    overflow: hidden;
+    padding: 0;
+}
+
+.container {
+    padding: 50px;
 }
 
 .card {
-    background: white;
-    padding: 40px 30px;
-    border-radius: 25px;
-    text-align: center;
-    box-shadow: 0 25px 50px rgba(255,0,0,0.25);
-    animation: pop 1.2s ease;
-}
-
-@keyframes pop {
-    0% { transform: scale(0); }
-    100% { transform: scale(1); }
-}
-
-h1 {
-    color: #ff3b6f;
-    margin-bottom: 10px;
-}
-
-p {
-    font-size: 18px;
-    color: #444;
+    background: rgba(255,255,255,0.15);
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: auto;
 }
 
 button {
-    margin-top: 20px;
-    padding: 12px 28px;
-    font-size: 18px;
+    padding: 12px 25px;
+    margin: 10px;
+    font-size: 16px;
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+}
+
+.yes {
+    background: #2ecc71;
     color: white;
-    transition: 0.3s;
 }
 
-button:hover {
-    transform: scale(1.1);
+.no {
+    background: #e74c3c;
+    color: white;
 }
 
-.heart {
-    position: absolute;
-    color: rgba(255,0,0,0.8);
-    animation: float 6s linear infinite;
+.option {
+    background: #f1c40f;
+    color: black;
 }
 
-@keyframes float {
-    0% {
-        transform: translateY(100vh) scale(0.5);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-10vh) scale(1.2);
-        opacity: 0;
-    }
+.hidden {
+    display: none;
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
-    <h1>💖 Will You Be My Valentine 💖</h1>
-    <p>Dear <b>Ragini</b>,<br>
-    You make my world brighter every day 🌸</p>
-    <button onclick="yesClick()">Yes ❤️</button>
+<div class="container">
+    <div class="card">
+
+        <h1>💌 Will You Be My Valentine?</h1>
+        <button class="yes" onclick="yesClicked()">YES 💖</button>
+
+        <p id="step1"></p>
+        <button id="outfitBtn" class="option hidden" onclick="showGift()">See My Outfit 👗</button>
+
+        <p id="step2"></p>
+
+        <div id="gifts" class="hidden">
+            <h3>🎁 Something for You</h3>
+            <button class="option">💍 Ring</button>
+            <button class="option">🌹 Roses</button>
+            <button class="option">🍫 Chocolate</button>
+            <br><br>
+            <button class="yes" onclick="showQuiz()">Next 💕</button>
+        </div>
+
+        <div id="quiz" class="hidden">
+            <h3>❓ Who is the absolute in this relationship?</h3>
+            <button class="option" onclick="wrong()">You</button>
+            <button class="option" onclick="correct()">You & Me 💑</button>
+            <button class="option" onclick="wrong()">Me</button>
+        </div>
+
+        <p id="final"></p>
+
+    </div>
 </div>
 
-<audio id="music" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
-
 <script>
-function yesClick() {
-    document.getElementById("music").play();
-    alert("Yay! ❤️ You made my Valentine special!");
+function yesClicked() {
+    document.getElementById("step1").innerText =
+    "Happy Valentine Baby 💕";
+    document.getElementById("outfitBtn").classList.remove("hidden");
 }
 
-// Floating hearts
-setInterval(() => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 25 + 15 + "px";
-    document.body.appendChild(heart);
+function showGift() {
+    document.getElementById("step2").innerText =
+    "Something special for you 💖";
+    document.getElementById("gifts").classList.remove("hidden");
+}
 
-    setTimeout(() => heart.remove(), 6000);
-}, 300);
+function showQuiz() {
+    document.getElementById("quiz").classList.remove("hidden");
+}
+
+function correct() {
+    document.getElementById("final").innerText =
+    "✨ You & Me — forever ❤️  
+    You are my favorite person, my happiness, my everything 💕";
+}
+
+function wrong() {
+    alert("Try again 😄❤️");
+}
 </script>
 
 </body>
 </html>
-
